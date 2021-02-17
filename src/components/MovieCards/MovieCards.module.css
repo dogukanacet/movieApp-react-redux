@@ -1,0 +1,22 @@
+.MovieCards {
+    float: left;
+    width: 300px;
+    height: 520px;
+    border: 20px;
+    background-color: #61440b;
+    display: block;
+    margin: 10px;
+    box-shadow: none;
+    border-radius: 5px;
+}
+
+.MovieCards p {
+    color: white;
+    font-size: 0.7vw;
+    text-align: center;
+}
+
+.MovieCards img {
+    max-width: 100%;
+    max-height: 100%;
+}
