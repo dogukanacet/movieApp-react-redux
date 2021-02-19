@@ -6,9 +6,9 @@ const MovieCards = (props) => {
     <div className={styles.MovieCards}>
       <img
         id="poster"
-        src="https://i.pinimg.com/originals/6a/f3/52/6af3526e192068c211cef13dfe33a533.jpg"
+        src={"https://image.tmdb.org/t/p/original" + props.poster}
       />
-      <p>poster name</p>
+      <p>{props.title}</p>
     </div>
   );
 };
