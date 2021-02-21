@@ -11,9 +11,10 @@
 }
 
 .MovieCards p {
+    margin-top: 10px;
     color: white;
-    font-size: 0.7vw;
     text-align: center;
+    font-weight: 600;
 }
 
 .MovieCards img {

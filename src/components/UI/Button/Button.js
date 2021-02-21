@@ -3,8 +3,14 @@ import React from "react";
 import styles from "./Button.module.css";
 
 const Button = (props) => (
-  <button title="Search" value="" type="submit" className={styles.Button}>
-    search
+  <button
+    title="Button"
+    value=""
+    type="submit"
+    style={{ fontSize: props.fontSize }}
+    className={styles.Button}
+  >
+    {props.children}
   </button>
 );
 
