@@ -1,0 +1,18 @@
+.NavigationItem {
+    margin-bottom: 7px;
+    list-style: none;
+    width: 100%;
+}
+
+.NavigationItem:hover {
+    text-decoration: none;
+}
+
+.NavigationItem .NavLink {
+    color: white;
+    text-decoration: none;
+}
+
+.Active {
+    color: #e00073;
+}

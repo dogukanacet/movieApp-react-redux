@@ -9,11 +9,11 @@
     position: sticky;
 }
 
-@media(max-width:1500px) {
+/* @media(max-width:1500px) {
     .Sidebar {
         display: none;
     }
-}
+} */
 
 .Sidebar .Title {
     margin: 0;
@@ -29,17 +29,12 @@
     list-style: none;
 }
 
+.Sidebar ul {
+    width: 100%;
+    padding: 0;
+}
+
 .Sidebar .Search {
     display: inline-flex;
     margin: 15px 0 30px 0;
-}
-
-.Sidebar img {}
-
-.Sidebar .Icon {
-    -moz-transform: rotate(105deg);
-    -ms-transform: rotate(105deg);
-    -o-transform: rotate(105deg);
-    -webkit-transform: rotate(105deg);
-    transform: rotate(105deg);
 }

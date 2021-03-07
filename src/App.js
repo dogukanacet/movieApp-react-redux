@@ -1,25 +1,28 @@
 import React, { Component } from "react";
 import styles from "./App.module.css";
 
+import { Route, Switch, withRouter } from "react-router-dom";
+
+import Layout from "./hoc/Layout/Layout";
+
 import Movies from "./containers/Movies/Movies";
-import Sidebar from "./components/Sidebar/Sidebar";
-import { Container, Col, Row } from "react-bootstrap";
 
 class App extends Component {
   render() {
     return (
-      <Container fluid className={styles.App}>
-        <Row>
-          <Col sm={2}>
-            <Sidebar />
-          </Col>
-          <Col sm={10}>
-            <Movies />
-          </Col>
-        </Row>
-      </Container>
+      <div>
+        <Layout>
+          <Switch>
+            <Route
+              path="/search"
+              render={() => <Movies searched={this.props.location.search} />}
+            />
+            <Route path="/" component={Movies} />
+          </Switch>
+        </Layout>
+      </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

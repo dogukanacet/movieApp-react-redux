@@ -1,0 +1,55 @@
+.Input {
+    display: flex;
+}
+
+.Input input {
+    outline: 0;
+    height: 42px;
+    width: 184px;
+    line-height: 42px;
+    padding: 0 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #212121;
+    border: 0;
+    float: left;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.Input input:focus {
+    background-color: #fff;
+}
+
+.InputWithButton {
+    display: flex;
+}
+
+.InputWithButton input {
+    outline: 0;
+    height: 42px;
+    width: 184px;
+    line-height: 42px;
+    padding: 0 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #212121;
+    border: 0;
+    float: left;
+    -webkit-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+}
+
+.InputWithButton input:focus {
+    background-color: #fff;
+}
+
+.InputWithButton button {
+    border-radius: 0 4px 4px 0;
+}
+
+.InputWithButton .Rotate {
+    -moz-transform: rotate(110deg);
+    -ms-transform: rotate(110deg);
+    -o-transform: rotate(110deg);
+    -webkit-transform: rotate(110deg);
+    transform: rotate(110deg);
+}

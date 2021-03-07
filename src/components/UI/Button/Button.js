@@ -9,6 +9,7 @@ const Button = (props) => (
     type="submit"
     style={{ fontSize: props.fontSize }}
     className={styles.Button}
+    onClick={props.clicked}
   >
     {props.children}
   </button>
