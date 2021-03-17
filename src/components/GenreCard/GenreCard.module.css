@@ -1,0 +1,17 @@
+.GenreCard {
+    box-sizing: border-box;
+    color: white;
+    height: 200px;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.GenreCard span {
+    box-sizing: border-box;
+    display: block;
+    padding-top: 2vh;
+    padding-left: 2vw;
+}

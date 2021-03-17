@@ -1,4 +1,4 @@
-.MovieCards {
+.MovieCard {
     float: left;
     width: 300px;
     height: 520px;
@@ -10,14 +10,14 @@
     border-radius: 5px;
 }
 
-.MovieCards p {
+.MovieCard p {
     margin-top: 10px;
     color: white;
     text-align: center;
     font-weight: 600;
 }
 
-.MovieCards img {
+.MovieCard img {
     max-width: 100%;
     max-height: 100%;
 }

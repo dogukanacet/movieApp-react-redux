@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./Button.module.css";
 
-const Button = (props) => (
+const button = (props) => (
   <button
     title="Button"
     value=""
@@ -15,4 +15,4 @@ const Button = (props) => (
   </button>
 );
 
-export default Button;
+export default button;

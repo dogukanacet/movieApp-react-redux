@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import styles from "./NavigationItem.module.css";
 
-const NavigationItem = (props) => (
+const navigationItem = (props) => (
   <li className={styles.NavigationItem}>
     <NavLink
       style={{ color: "white", textDecoration: "none" }}
@@ -17,4 +17,4 @@ const NavigationItem = (props) => (
   </li>
 );
 
-export default NavigationItem;
+export default navigationItem;

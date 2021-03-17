@@ -1,5 +1,7 @@
 .Layout {
+    width: unset;
     display: flex;
+    box-sizing: border-box;
     height: 100vh;
     margin: auto 0;
     padding: 20px 30px 20px 30px;

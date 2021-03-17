@@ -1,19 +1,26 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import styles from "./Input.module.css";
-import { Link, withRouter } from "react-router-dom";
 
 import Button from "../Button/Button";
 
 const input = (props) => {
+  // let inputValue = "";
+
+  // let inputValueHandler = (e) => {
+  //   inputValue = e.target.value;
+  // };
+
   return (
     <div className={props.withButton ? styles.InputWithButton : styles.Input}>
       <input
+        id="id"
         type="text"
         name="search"
         placeholder={props.placeholder}
         autoComplete="off"
         onChange={props.changed}
+        // onChange={(e) => inputValueHandler(e)}
       />
       {props.withButton ? (
         <Button clicked={props.clicked} fontSize="25px">

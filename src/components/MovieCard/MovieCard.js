@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./MovieCards.module.css";
+import styles from "./MovieCard.module.css";
 
-const MovieCards = (props) => {
+const movieCard = (props) => {
   return (
-    <div className={styles.MovieCards}>
+    <div className={styles.MovieCard}>
       <img
         id="poster"
         src={"https://image.tmdb.org/t/p/original" + props.poster}
@@ -13,4 +13,4 @@ const MovieCards = (props) => {
   );
 };
 
-export default MovieCards;
+export default movieCard;

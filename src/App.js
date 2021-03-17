@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import styles from "./App.module.css";
 
 import { Route, Switch, withRouter } from "react-router-dom";
 
 import Layout from "./hoc/Layout/Layout";
 
 import Movies from "./containers/Movies/Movies";
+import Genres from "./containers/Genres/Genres";
 
 class App extends Component {
   render() {
@@ -13,6 +13,7 @@ class App extends Component {
       <div>
         <Layout>
           <Switch>
+            <Route path="/genres" component={Genres} />
             <Route
               path="/search"
               render={() => <Movies searched={this.props.location.search} />}

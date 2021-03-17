@@ -11,7 +11,7 @@ class Layout extends Component {
     return (
       <Fragment>
         <Container fluid className={styles.Layout}>
-          <Row>
+          <Row style={{ width: "100%" }}>
             <Col style={{ padding: "0" }} sm={2}>
               <Sidebar />
             </Col>

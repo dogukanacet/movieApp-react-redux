@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from "react";
 
 import MovieService from "../../services/MovieService";
-import { withRouter } from "react-router-dom";
 
-import styles from "./Movies.module.css";
-
-import MovieCards from "../../components/MovieCards/MovieCards";
+import MovieCard from "../../components/MovieCard/MovieCard";
 import Spinner from "../../components/UI/Spinner/Spinner";
 
 class Movies extends Component {
@@ -13,7 +10,6 @@ class Movies extends Component {
     movies: [],
     loading: false,
     error: false,
-    notFound: false,
   };
 
   componentDidMount() {
@@ -48,9 +44,9 @@ class Movies extends Component {
         let searchedMovies = res.data.results;
         console.log(searchedMovies);
         this.setState({
-          notFound: false,
           movies: searchedMovies,
           loading: false,
+          error: false,
         });
       })
       .catch((err) => {
@@ -64,11 +60,12 @@ class Movies extends Component {
     this.setState({ loading: true });
     MovieService.getPopularMovies()
       .then((res) => {
+        console.log(res)
         let popularMovies = res.data.results;
         this.setState({
-          notFound: false,
           movies: popularMovies,
           loading: false,
+          error: false,
         });
       })
       .catch((err) => {
@@ -81,7 +78,7 @@ class Movies extends Component {
   render() {
     let movies = this.state.movies.map((movie) => {
       return (
-        <MovieCards
+        <MovieCard
           key={movie.id}
           title={movie.title}
           poster={movie.poster_path}
@@ -90,19 +87,15 @@ class Movies extends Component {
     });
 
     if (this.state.error) {
-      movies = (
-        <h1 style={{ width: "80vw", color: "white" }}>Something went wrong</h1>
-      );
+      movies = <h1 style={{ color: "white" }}>Something went wrong</h1>;
     }
 
     if (this.state.movies.length < 1) {
-      movies = (
-        <h1 style={{ width: "80vw", color: "white" }}>Movie not found</h1>
-      );
+      movies = <h1 style={{ color: "white" }}>Movie not found</h1>;
     }
     if (this.state.loading) {
       movies = (
-        <div style={{ width: "75vw" }}>
+        <div>
           <Spinner />;
         </div>
       );

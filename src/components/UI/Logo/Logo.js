@@ -4,7 +4,7 @@ import styles from "./Logo.module.css";
 
 import logoPng from "../../../assets/logo.png";
 
-const Logo = (props) => (
+const logo = (props) => (
   <img
     src={logoPng}
     className={styles.Logo}
@@ -13,4 +13,4 @@ const Logo = (props) => (
     alt="Logo"
   />
 );
-export default Logo;
+export default logo;

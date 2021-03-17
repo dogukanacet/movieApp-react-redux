@@ -10,7 +10,7 @@ import NavigationItem from "../../components/UI/NavigationItem/NavigationItem";
 
 class Sidebar extends Component {
   state = {
-    searchValue: null,
+    searchValue: "",
   };
 
   searchChangedHandler = (event) => {
@@ -19,7 +19,7 @@ class Sidebar extends Component {
     });
   };
 
-  searchClickedHandler = (event) => {
+  searchClickedHandler = () => {
     this.props.history.push({
       pathname: "/search",
       search: "?" + this.state.searchValue,
