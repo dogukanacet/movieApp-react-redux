@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from "react";
 
+import { connect } from "react-redux";
+import * as actionType from "../../store/actions";
+
 import MovieService from "../../services/MovieService";
 
 import MovieCard from "../../components/MovieCard/MovieCard";
@@ -7,76 +10,47 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 
 class Movies extends Component {
   state = {
-    movies: [],
     loading: false,
-    error: false,
   };
 
   componentDidMount() {
-    this.getPopularMovies();
+    this.props.OnStartup();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (!this.props.searched) {
-      if (prevProps.searched != this.props.searched) {
-        this.getPopularMovies();
+  componentDidUpdate(prevProps) {
+    if (!this.props.searchVal) {
+      if (prevProps.searchVal != this.props.searchVal) {
+        this.props.OnStartup();
       }
     }
-    if (this.props.searched) {
-      if (prevProps.searched != this.props.searched) {
-        let query = new URLSearchParams(this.props.searched);
-        this.setState({
-          searched: query,
-        });
-      }
-    }
-    if (this.state.searched) {
-      if (prevState.searched != this.state.searched) {
+
+    if (this.props.searchVal) {
+      if (prevProps.searchVal != this.props.searchVal) {
         this.searchMovies();
       }
     }
   }
 
-  searchMovies = () => {
-    this.setState({ loading: true });
-    MovieService.searchMovie(this.state.searched)
-      .then((res) => {
-        let searchedMovies = res.data.results;
-        console.log(searchedMovies);
-        this.setState({
-          movies: searchedMovies,
-          loading: false,
-          error: false,
-        });
-      })
-      .catch((err) => {
-        this.setState({
-          error: true,
-        });
-      });
-  };
-
-  getPopularMovies = () => {
-    this.setState({ loading: true });
-    MovieService.getPopularMovies()
-      .then((res) => {
-        console.log(res)
-        let popularMovies = res.data.results;
-        this.setState({
-          movies: popularMovies,
-          loading: false,
-          error: false,
-        });
-      })
-      .catch((err) => {
-        this.setState({
-          error: true,
-        });
-      });
-  };
+  // searchMovies = () => {
+  //   this.setState({ loading: true });
+  //   MovieService.searchMovie(this.props.searchVal)
+  //     .then((res) => {
+  //       let searchedMovies = res.data.results;
+  //       this.setState({
+  //         movies: searchedMovies,
+  //         loading: false,
+  //         error: false,
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       this.setState({
+  //         error: true,
+  //       });
+  //     });
+  // };
 
   render() {
-    let movies = this.state.movies.map((movie) => {
+    let movies = this.props.movies.map((movie) => {
       return (
         <MovieCard
           key={movie.id}
@@ -90,7 +64,7 @@ class Movies extends Component {
       movies = <h1 style={{ color: "white" }}>Something went wrong</h1>;
     }
 
-    if (this.state.movies.length < 1) {
+    if (this.props.movies.length < 1) {
       movies = <h1 style={{ color: "white" }}>Movie not found</h1>;
     }
     if (this.state.loading) {
@@ -105,4 +79,17 @@ class Movies extends Component {
   }
 }
 
-export default Movies;
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+    searchVal: state.searchValue,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    OnStartup: () => dispatch({ type: actionType.FETCH_MOVIES }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movies);

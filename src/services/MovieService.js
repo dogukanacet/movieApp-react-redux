@@ -28,9 +28,9 @@ const MovieService = {
     );
   },
 
-  searchMovie: (params) => {
+  searchMovie: (searchVal) => {
     return axios.get(
-      MovieService.search + MovieService.api_key + MovieService.query + params
+      MovieService.search + MovieService.api_key + MovieService.query + searchVal
     );
   },
 };

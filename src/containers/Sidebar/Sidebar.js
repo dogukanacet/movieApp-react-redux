@@ -4,25 +4,25 @@ import styles from "./Sidebar.module.css";
 
 import { NavLink, withRouter } from "react-router-dom";
 
+import { connect } from "react-redux";
+import * as actionType from "../../store/actions";
+
 import Logo from "../../components/UI/Logo/Logo";
 import Input from "../../components/UI/Input/Input";
 import NavigationItem from "../../components/UI/NavigationItem/NavigationItem";
 
 class Sidebar extends Component {
-  state = {
-    searchValue: "",
-  };
+  searchbarValue = "";
 
-  searchChangedHandler = (event) => {
-    this.setState({
-      searchValue: event.target.value,
-    });
+  searchbarValueHandler = (event) => {
+    this.searchbarValue = event.target.value;
   };
 
   searchClickedHandler = () => {
+    this.props.onInputChange(this.searchbarValue);
     this.props.history.push({
       pathname: "/search",
-      search: "?" + this.state.searchValue,
+      search: "?" + this.searchbarValue,
     });
   };
 
@@ -45,7 +45,7 @@ class Sidebar extends Component {
               placeholder="Search"
               buttonText="&#9740;"
               buttonTextStyle="Rotate"
-              changed={(event) => this.searchChangedHandler(event)}
+              changed={(event) => this.searchbarValueHandler(event)}
               clicked={this.searchClickedHandler}
             />
           </div>
@@ -59,4 +59,23 @@ class Sidebar extends Component {
   }
 }
 
-export default withRouter(Sidebar);
+const mapStateToProps = (state) => {
+  return {
+    searchVal: state.searchValue,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onInputChange: (inputData) =>
+      dispatch({
+        type: actionType.SEARCH_MOVIES,
+        searchVal: inputData,
+      }),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Sidebar));

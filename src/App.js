@@ -14,10 +14,6 @@ class App extends Component {
         <Layout>
           <Switch>
             <Route path="/genres" component={Genres} />
-            <Route
-              path="/search"
-              render={() => <Movies searched={this.props.location.search} />}
-            />
             <Route path="/" component={Movies} />
           </Switch>
         </Layout>
