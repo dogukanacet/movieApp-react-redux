@@ -5,7 +5,7 @@ import styles from "./Sidebar.module.css";
 import { NavLink, withRouter } from "react-router-dom";
 
 import { connect } from "react-redux";
-import * as actionType from "../../store/actions";
+import * as actions from "../../store/actions/index";
 
 import Logo from "../../components/UI/Logo/Logo";
 import Input from "../../components/UI/Input/Input";
@@ -61,17 +61,13 @@ class Sidebar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    searchVal: state.searchValue,
+    searchVal: state.sidebar.searchValue,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onInputChange: (inputData) =>
-      dispatch({
-        type: actionType.SEARCH_MOVIES,
-        searchVal: inputData,
-      }),
+    onInputChange: (inputData) => dispatch(actions.searchMovies(inputData)),
   };
 };
 

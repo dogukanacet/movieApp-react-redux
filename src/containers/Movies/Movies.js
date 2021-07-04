@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from "react";
 
 import { connect } from "react-redux";
-import * as actionType from "../../store/actions";
-
-import MovieService from "../../services/MovieService";
+import * as actions from "../../store/actions/index";
 
 import MovieCard from "../../components/MovieCard/MovieCard";
 import Spinner from "../../components/UI/Spinner/Spinner";
@@ -81,14 +79,14 @@ class Movies extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    movies: state.movies,
-    searchVal: state.searchValue,
+    movies: state.movies.movieList,
+    searchVal: state.sidebar.searchValue,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    OnStartup: () => dispatch({ type: actionType.FETCH_MOVIES }),
+    OnStartup: () => dispatch(actions.fetchMovies()),
   };
 };
 

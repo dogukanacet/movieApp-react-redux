@@ -1,7 +1,7 @@
-import * as actionType from "./actions";
+import * as actionType from "../actions/actionTypes";
 
 const initialState = {
-  movies: [
+  movieList: [
     {
       id: 508943,
       title: "Luca",
@@ -9,7 +9,6 @@ const initialState = {
     },
   ],
   error: false,
-  searchValue: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,12 +16,6 @@ const reducer = (state = initialState, action) => {
     case actionType.FETCH_MOVIES:
       return {
         ...state,
-      };
-
-    case actionType.SEARCH_MOVIES:
-      return {
-        ...state,
-        searchValue: action.searchVal,
       };
 
     default:
