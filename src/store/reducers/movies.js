@@ -1,13 +1,7 @@
 import * as actionType from "../actions/actionTypes";
 
 const initialState = {
-  movieList: [
-    {
-      id: 508943,
-      title: "Luca",
-      poster_path: "/jTswp6KyDYKtvC52GbHagrZbGvD.jpg",
-    },
-  ],
+  movieList: null,
   error: false,
 };
 
@@ -16,6 +10,13 @@ const reducer = (state = initialState, action) => {
     case actionType.FETCH_MOVIES:
       return {
         ...state,
+        error: false,
+        movieList: action.movList,
+      };
+    case actionType.FETCH_MOVIES_FAILED:
+      return {
+        ...state,
+        error: true,
       };
 
     default:

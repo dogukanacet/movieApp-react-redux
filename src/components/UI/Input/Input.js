@@ -17,6 +17,7 @@ const input = (props) => {
         id="id"
         type="text"
         name="search"
+        onFocus={(event) => (event.target.value = "")}
         placeholder={props.placeholder}
         autoComplete="off"
         onChange={props.changed}

@@ -12,18 +12,20 @@ import Input from "../../components/UI/Input/Input";
 import NavigationItem from "../../components/UI/NavigationItem/NavigationItem";
 
 class Sidebar extends Component {
-  searchbarValue = "";
+  state = {
+    searchbarValue: "",
+  };
 
   searchbarValueHandler = (event) => {
-    this.searchbarValue = event.target.value;
+    this.state.searchbarValue = event.target.value;
   };
 
   searchClickedHandler = () => {
-    this.props.onInputChange(this.searchbarValue);
     this.props.history.push({
       pathname: "/search",
-      search: "?" + this.searchbarValue,
+      search: "?" + this.state.searchbarValue,
     });
+    this.props.onInputChange(this.state.searchbarValue);
   };
 
   render() {
@@ -59,19 +61,10 @@ class Sidebar extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    searchVal: state.sidebar.searchValue,
-  };
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
     onInputChange: (inputData) => dispatch(actions.searchMovies(inputData)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(Sidebar));
+export default connect(null, mapDispatchToProps)(withRouter(Sidebar));

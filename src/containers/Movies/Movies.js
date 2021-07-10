@@ -7,11 +7,8 @@ import MovieCard from "../../components/MovieCard/MovieCard";
 import Spinner from "../../components/UI/Spinner/Spinner";
 
 class Movies extends Component {
-  state = {
-    loading: false,
-  };
-
   componentDidMount() {
+    console.log(this.props);
     this.props.OnStartup();
   }
 
@@ -22,55 +19,42 @@ class Movies extends Component {
       }
     }
 
+    if (this.props.location.pathname === "/") {
+      if (prevProps.location.pathname != this.props.location.pathname)
+        this.props.OnStartup();
+    }
+
     if (this.props.searchVal) {
       if (prevProps.searchVal != this.props.searchVal) {
-        this.searchMovies();
+        this.props.onSearch(this.props.searchVal);
       }
     }
   }
 
-  // searchMovies = () => {
-  //   this.setState({ loading: true });
-  //   MovieService.searchMovie(this.props.searchVal)
-  //     .then((res) => {
-  //       let searchedMovies = res.data.results;
-  //       this.setState({
-  //         movies: searchedMovies,
-  //         loading: false,
-  //         error: false,
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       this.setState({
-  //         error: true,
-  //       });
-  //     });
-  // };
-
   render() {
-    let movies = this.props.movies.map((movie) => {
-      return (
-        <MovieCard
-          key={movie.id}
-          title={movie.title}
-          poster={movie.poster_path}
-        />
-      );
-    });
+    let movies = (
+      <div>
+        <Spinner />;
+      </div>
+    );
 
-    if (this.state.error) {
+    if (this.props.movies) {
+      movies = this.props.movies.map((movie) => {
+        return (
+          <MovieCard
+            key={movie.id}
+            title={movie.title}
+            poster={movie.poster_path}
+          />
+        );
+      });
+      if (this.props.movies.length < 1) {
+        movies = <h1 style={{ color: "white" }}>Movie not found</h1>;
+      }
+    }
+
+    if (this.props.error) {
       movies = <h1 style={{ color: "white" }}>Something went wrong</h1>;
-    }
-
-    if (this.props.movies.length < 1) {
-      movies = <h1 style={{ color: "white" }}>Movie not found</h1>;
-    }
-    if (this.state.loading) {
-      movies = (
-        <div>
-          <Spinner />;
-        </div>
-      );
     }
 
     return <Fragment>{movies}</Fragment>;
@@ -79,14 +63,15 @@ class Movies extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    movies: state.movies.movieList,
-    searchVal: state.sidebar.searchValue,
+    movies: state.movieList,
+    error: state.error,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    OnStartup: () => dispatch(actions.fetchMovies()),
+    OnStartup: () => dispatch(actions.initMovies()),
+    onSearch: (searchVal) => dispatch(actions.searchMovies(searchVal)),
   };
 };
 

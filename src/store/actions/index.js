@@ -1,2 +1,1 @@
-export { fetchMovies } from "./movies";
-export { searchMovies } from "./sidebar";
+export { initMovies, searchMovies } from "./movies";

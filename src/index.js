@@ -4,10 +4,9 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
 import { Provider } from "react-redux";
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import moviesReducer from "./store/reducers/movies";
-import sidebarReducer from "./store/reducers/sidebar";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
@@ -28,13 +27,10 @@ const logger = (store) => {
   };
 };
 
-const rootReducers = combineReducers({
-  movies: moviesReducer,
-  sidebar: sidebarReducer,
-});
+
 
 const store = createStore(
-  rootReducers,
+  moviesReducer,
   composeEnhancers(applyMiddleware(thunk, logger))
 );
 
