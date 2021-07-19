@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import { Route, Switch, withRouter } from "react-router-dom";
 
+import { connect } from "react-redux";
+
 import Layout from "./hoc/Layout/Layout";
 
 import Movies from "./containers/Movies/Movies";
@@ -13,8 +15,12 @@ class App extends Component {
       <div>
         <Layout>
           <Switch>
-            <Route path="/genres" component={Genres} />
-            <Route path="/" component={Movies} />
+            <Route
+              path={"/genres/" + this.props.genreName}
+              component={Movies} exact
+            />
+            <Route path="/genres" component={Genres} exact />
+            <Route path="/" component={Movies}  />
           </Switch>
         </Layout>
       </div>
@@ -22,4 +28,10 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = (state) => {
+  return {
+    genreName: state.genreName,
+  };
+};
+
+export default connect(mapStateToProps)(withRouter(App));

@@ -1,7 +1,12 @@
-export const FETCH_MOVIES = "FETCH_MOVIES";
-export const FETCH_MOVIES_FAILED = "FETCH_MOVIES_FAILED";
-export const SEARCH_MOVIES = "SEARCH_MOVIES";
-export const SEARCH_MOVIES_FAILED = "SEARCH_MOVIES_FAILED";
+export const FETCH_POPULAR_MOVIES = "FETCH_POPULAR_MOVIES";
+
+export const GET_SEARCH_INPUT = "GET_SEARCH_INPUT";
+export const SEARCH_MOVIE = "SEARCH_MOVIES";
+
+export const FETCH_GENRE_LIST = "FETCH_GENRE_LIST";
+export const FETCH_GENRE_MOVIES = "FETCH_GENRE_MOVIES";
+
+export const REQUEST_FAILED = "REQUEST_FAILED";
 
 export const MovieService = {
   api_key: "?api_key=6298ebd066f18ba169d303bf2858107d",

@@ -2,6 +2,9 @@ import React, { Component } from "react";
 
 import { withRouter } from "react-router-dom";
 
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
+
 import MovieService from "../../services/MovieService";
 
 import GenreCard from "../../components/GenreCard/GenreCard";
@@ -35,6 +38,8 @@ class Genres extends Component {
 
   getGenres = (genreId, genreName) => {
     this.props.history.push("/genres/" + genreName);
+    this.props.onClick(genreId, genreName);
+    console.log(this.props);
   };
 
   render() {
@@ -47,11 +52,18 @@ class Genres extends Component {
         />
       );
     });
-    if (this.state.error) {
+    if (this.props.error) {
       movieGenres = <h1 style={{ color: "white" }}>Something went wrong</h1>;
     }
     return <Fragment>{movieGenres}</Fragment>;
   }
 }
 
-export default withRouter(Genres);
+const mapStateToProps = (state) => {
+  return {
+    genreName: state.genreName,
+    error: state.error,
+  };
+};
+
+export default connect(mapStateToProps)(withRouter(Genres));

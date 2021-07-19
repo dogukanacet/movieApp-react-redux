@@ -20,12 +20,12 @@ class Sidebar extends Component {
     this.state.searchbarValue = event.target.value;
   };
 
-  searchClickedHandler = () => {
+  searchHandler = () => {
     this.props.history.push({
       pathname: "/search",
       search: "?" + this.state.searchbarValue,
     });
-    this.props.onInputChange(this.state.searchbarValue);
+    this.props.onSearch(this.state.searchbarValue);
   };
 
   render() {
@@ -33,13 +33,16 @@ class Sidebar extends Component {
       <div className={styles.Sidebar}>
         <nav>
           <NavLink style={{ textDecoration: "none" }} to="/" exact>
-            <div style={{ display: "inline-flex" }}>
+            <div
+              onClick={this.props.onHomeClick}
+              style={{ display: "inline-flex" }}
+            >
               <Logo height="35px" width="35px" />
               <p className={styles.Title}>&#160; MovieStore</p>
             </div>
           </NavLink>
           <div
-            onKeyPress={(e) => e.key === "Enter" && this.searchClickedHandler()}
+            onKeyPress={(e) => e.key === "Enter" && this.searchHandler()}
             className={styles.Search}
           >
             <Input
@@ -48,11 +51,16 @@ class Sidebar extends Component {
               buttonText="&#9740;"
               buttonTextStyle="Rotate"
               changed={(event) => this.searchbarValueHandler(event)}
-              clicked={this.searchClickedHandler}
+              clicked={this.searchHandler}
             />
           </div>
           <ul>
-            <NavigationItem path="/" name="Home" exact />
+            <NavigationItem
+              onClick={this.props.onHomeClick}
+              path="/"
+              name="Home"
+              exact
+            />
             <NavigationItem path="/genres" name="Genres" exact />
           </ul>
         </nav>
@@ -63,7 +71,8 @@ class Sidebar extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onInputChange: (inputData) => dispatch(actions.searchMovies(inputData)),
+    onHomeClick: () => dispatch(actions.initMovies()),
+    onSearch: (inputData) => dispatch(actions.searchMovies(inputData)),
   };
 };
 
