@@ -8,7 +8,9 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 
 class Movies extends Component {
   componentDidMount() {
-    this.props.OnStartup();
+    if (!this.props.movies) {
+      this.props.OnStartup();
+    }
   }
 
   render() {
@@ -39,9 +41,18 @@ class Movies extends Component {
 
     return (
       <Fragment>
-        <h1 style={{ width: "70vw", color: "white", textAlign: "center" }}>
-          {this.props.title}
-        </h1>
+        <div>
+          <h1
+            style={{
+              position: "sticky",
+              width: "70vw",
+              color: "white",
+              textAlign: "center",
+            }}
+          >
+            {this.props.title}
+          </h1>
+        </div>
         {movies}
       </Fragment>
     );
@@ -50,9 +61,9 @@ class Movies extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    movies: state.movieList,
-    title: state.title,
-    error: state.error,
+    movies: state.movies.movieList,
+    title: state.movies.title,
+    error: state.movies.error,
   };
 };
 

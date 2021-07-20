@@ -55,12 +55,9 @@ class Sidebar extends Component {
             />
           </div>
           <ul>
-            <NavigationItem
-              onClick={this.props.onHomeClick}
-              path="/"
-              name="Home"
-              exact
-            />
+            <span onClick={this.props.onHomeClick}>
+              <NavigationItem path="/" name="Home" exact />
+            </span>
             <NavigationItem path="/genres" name="Genres" exact />
           </ul>
         </nav>

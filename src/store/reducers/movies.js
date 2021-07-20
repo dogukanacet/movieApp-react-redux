@@ -16,12 +16,20 @@ const reducer = (state = initialState, action) => {
         error: false,
       };
 
+    case actionType.FETCH_GENRE_MOVIES:
+      return {
+        ...state,
+        movieList: action.genreMovList,
+        title: action.title,
+        error: false,
+      };
+
     case actionType.SEARCH_MOVIE:
       return {
         ...state,
-        error: false,
         movieList: action.searchRes,
         title: action.title,
+        error: false,
       };
 
     case actionType.REQUEST_FAILED:

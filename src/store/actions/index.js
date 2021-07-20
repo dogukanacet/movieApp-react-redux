@@ -1,1 +1,2 @@
-export { initMovies, searchMovies } from "./movies";
+export { initMovies, searchMovies, fetchGenreMovies } from "./movies";
+export { fetchGenresList } from "./genres";

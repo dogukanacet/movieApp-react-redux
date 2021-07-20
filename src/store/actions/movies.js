@@ -45,7 +45,8 @@ export const searchMovies = (inputVal) => {
       )
       .then((res) => {
         let searchedMovie = res.data.results;
-        let title = searchedMovie.length < 1 ? null : searchedMovie.length + " Results";
+        let title =
+          searchedMovie.length < 1 ? null : searchedMovie.length + " Results";
 
         dispatch(searchMovie(searchedMovie, title));
       })
@@ -57,25 +58,33 @@ export const searchMovies = (inputVal) => {
 
 //
 
-// export const getGenre = (genreId, genreName) => {
-//   return (dispatch) => {
-//     axios
-//       .get(
-//         actionType.MovieService.discover +
-//           actionType.MovieService.api_key +
-//           actionType.MovieService.genre +
-//           genreId
-//       )
-//       .then((res) => {
-//         console.log(res);
-//         let genre = res.data.results;
-//         dispatch(fetchMovies(genre, genreName));
-//       })
-//       .catch((err) => {
-//         dispatch(requestFailed());
-//       });
-//   };
-// };
+export const getGenreMovies = (res, genreName) => {
+  return {
+    type: actionType.FETCH_GENRE_MOVIES,
+    genreMovList: res,
+    title: genreName + " Movies",
+  };
+};
+
+export const fetchGenreMovies = (genreId, genreName) => {
+  return (dispatch) => {
+    axios
+      .get(
+        actionType.MovieService.discover +
+          actionType.MovieService.api_key +
+          actionType.MovieService.genre +
+          genreId
+      )
+      .then((res) => {
+        console.log(res);
+        let genre = res.data.results;
+        dispatch(getGenreMovies(genre, genreName));
+      })
+      .catch((err) => {
+        dispatch(requestFailed());
+      });
+  };
+};
 
 //
 

@@ -8,50 +8,36 @@ import * as actions from "../../store/actions/index";
 import MovieService from "../../services/MovieService";
 
 import GenreCard from "../../components/GenreCard/GenreCard";
+import Spinner from "../../components/UI/Spinner/Spinner";
 import { Fragment } from "react";
 
 class Genres extends Component {
-  state = {
-    genres: [],
-    error: false,
-  };
-
   componentDidMount() {
-    this.getGenreList();
+    this.props.onInit();
   }
 
-  getGenreList = () => {
-    MovieService.getGenreList()
-      .then((res) => {
-        console.log(res);
-        let genresList = res.data.genres;
-        this.setState({
-          genres: genresList,
-        });
-      })
-      .catch((err) => {
-        this.setState({
-          error: true,
-        });
-      });
-  };
-
-  getGenres = (genreId, genreName) => {
+  getGenreMovies = (genreId, genreName) => {
     this.props.history.push("/genres/" + genreName);
     this.props.onClick(genreId, genreName);
-    console.log(this.props);
   };
 
   render() {
-    let movieGenres = this.state.genres.map((genre) => {
-      return (
-        <GenreCard
-          clicked={() => this.getGenres(genre.id, genre.name)}
-          key={genre.id}
-          name={genre.name}
-        />
-      );
-    });
+    let movieGenres = (
+      <div>
+        <Spinner />;
+      </div>
+    );
+
+    if (this.props.genresList)
+      movieGenres = this.props.genresList.map((genre) => {
+        return (
+          <GenreCard
+            clicked={() => this.getGenreMovies(genre.id, genre.name)}
+            key={genre.id}
+            name={genre.name}
+          />
+        );
+      });
     if (this.props.error) {
       movieGenres = <h1 style={{ color: "white" }}>Something went wrong</h1>;
     }
@@ -61,9 +47,16 @@ class Genres extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    genreName: state.genreName,
-    error: state.error,
+    genresList: state.genres.genresList,
+    error: state.genres.error,
   };
 };
 
-export default connect(mapStateToProps)(withRouter(Genres));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onInit: () => dispatch(actions.fetchGenresList()),
+    onClick: (id, name) => dispatch(actions.fetchGenreMovies(id, name)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Genres));
