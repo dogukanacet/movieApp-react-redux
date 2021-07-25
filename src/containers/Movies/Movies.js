@@ -3,15 +3,34 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 
-import MovieCard from "../../components/MovieCard/MovieCard";
+import Details from "../Details/Details";
+import MovieCard from "../../components/Movies/MovieCard/MovieCard";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import Modal from "../../components/UI/Modal/Modal";
 
 class Movies extends Component {
+  state = {
+    showDetails: false,
+  };
+
   componentDidMount() {
     if (!this.props.movies) {
       this.props.OnStartup();
     }
   }
+
+  showDetails = (id) => {
+    this.props.OnClick(id);
+    this.setState({
+      showDetails: true,
+    });
+  };
+
+  closeDetails = () => {
+    this.setState({
+      showDetails: false,
+    });
+  };
 
   render() {
     let movies = (
@@ -24,6 +43,7 @@ class Movies extends Component {
       movies = this.props.movies.map((movie) => {
         return (
           <MovieCard
+            clicked={() => this.showDetails(movie.id)}
             key={movie.id}
             title={movie.title}
             poster={movie.poster_path}
@@ -41,6 +61,11 @@ class Movies extends Component {
 
     return (
       <Fragment>
+        {this.state.showDetails ? (
+          <Modal>
+            <Details clicked={this.closeDetails} />
+          </Modal>
+        ) : null}
         <div>
           <h1
             style={{
@@ -70,6 +95,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     OnStartup: () => dispatch(actions.initMovies()),
+    OnClick: (id) => dispatch(actions.fetchMovieDetails(id)),
   };
 };
 

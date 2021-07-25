@@ -2,9 +2,9 @@ import * as actionType from "./actionTypes";
 
 import axios from "../../services/axios-custom";
 
-export const fetchPopularMovies = (res) => {
+export const getPopularMovies = (res) => {
   return {
-    type: actionType.FETCH_POPULAR_MOVIES,
+    type: actionType.GET_POPULAR_MOVIES,
     movList: res,
     title: "Popular Movies",
   };
@@ -16,7 +16,7 @@ export const initMovies = () => {
       .get(actionType.MovieService.popular + actionType.MovieService.api_key)
       .then((response) => {
         let popularMovies = response.data.results;
-        dispatch(fetchPopularMovies(popularMovies));
+        dispatch(getPopularMovies(popularMovies));
       })
       .catch((error) => {
         dispatch(requestFailed());
@@ -60,7 +60,7 @@ export const searchMovies = (inputVal) => {
 
 export const getGenreMovies = (res, genreName) => {
   return {
-    type: actionType.FETCH_GENRE_MOVIES,
+    type: actionType.GET_GENRE_MOVIES,
     genreMovList: res,
     title: genreName + " Movies",
   };

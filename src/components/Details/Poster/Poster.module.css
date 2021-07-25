@@ -1,0 +1,23 @@
+.Poster {
+    height: 100%;
+    max-width: 30vw;
+}
+
+.MovieImage {
+    animation-name: popup;
+    animation-duration: 0.3s;
+    height: 100%;
+    -webkit-mask-image: -webkit-gradient( linear, right top, left top, color-stop(1, rgba(0, 0, 0, 1)), color-stop(0.25, rgba(0, 0, 0, 1)), color-stop(0, rgba(0, 0, 0, 0)));
+}
+
+@keyframes popup {
+    0% {
+        transform: scale(0.5);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

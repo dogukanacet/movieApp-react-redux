@@ -1,0 +1,41 @@
+
+.Close {
+    animation-name: popup;
+    animation-duration: 0.3s;
+    position: fixed;
+    width: 40px;
+    /* height: 32px; */
+    opacity: 0.5;
+    top: 10px;
+    right: 10px;
+    font-size: 34px;
+    color: #fff;
+    opacity: 0.3;
+    z-index: 11;
+    cursor: pointer;
+    transition-property: opacity;
+    transition-duration: 0.24s;
+    transition-timing-function: ease-i;
+    transition: 1s;
+}
+
+.Close:hover {
+    opacity: 1;
+}
+
+.Close.onclick {
+    right: 250px;
+    transition: 1s;
+}
+
+@keyframes popup {
+    0% {
+        transform: scale(0.5);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

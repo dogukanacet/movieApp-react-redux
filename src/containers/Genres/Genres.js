@@ -5,9 +5,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 
-import MovieService from "../../services/MovieService";
-
-import GenreCard from "../../components/GenreCard/GenreCard";
+import GenreCard from "../../components/Genres/GenreCard/GenreCard";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import { Fragment } from "react";
 

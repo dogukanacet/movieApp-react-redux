@@ -8,6 +8,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 import moviesReducer from "./store/reducers/movies";
 import genresReducer from "./store/reducers/genres";
+import detailsReducer from "./store/reducers/details";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
@@ -31,6 +32,7 @@ const logger = (store) => {
 const rootReducer = combineReducers({
   movies: moviesReducer,
   genres: genresReducer,
+  details: detailsReducer,
 });
 
 const store = createStore(

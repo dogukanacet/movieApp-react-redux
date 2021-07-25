@@ -8,7 +8,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionType.FETCH_POPULAR_MOVIES:
+    case actionType.GET_POPULAR_MOVIES:
       return {
         ...state,
         movieList: action.movList,
@@ -16,7 +16,7 @@ const reducer = (state = initialState, action) => {
         error: false,
       };
 
-    case actionType.FETCH_GENRE_MOVIES:
+    case actionType.GET_GENRE_MOVIES:
       return {
         ...state,
         movieList: action.genreMovList,

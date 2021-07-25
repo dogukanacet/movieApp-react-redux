@@ -1,0 +1,92 @@
+.MovieInfo {
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.3s;
+    animation-name: animatetop;
+    animation-duration: 0.3s;
+    border: 2px solid transparent;
+    background-color: transparent;
+    width: calc(67% - 30px);
+    position: fixed;
+    top: calc(50% - 200px);
+    right: 0;
+    height: 50%;
+}
+
+.MovieInfo .Title {
+    white-space: nowrap;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+    color: #e2e1d2;
+    font-size: 32px;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.MovieInfo .TitleInfo {
+    white-space: nowrap;
+    margin-top: 15px;
+    display: flex;
+    font-size: 15px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+    /* @nest .fa.fa-calendar {
+        text-shadow: 0 0 5px #228dff, 0 0 10px #228dff, 0 0 15px #228dff, 0 0 20px #fff, 0 0 35px #fff, 0 0 40px #228dff, 0 0 50px #228dff, 0 0 75px #228dff;
+        font-size: 15px;
+    }
+    @nest .far.fa-clock {
+        text-shadow: 0 0 5px #228dff, 0 0 10px #228dff, 0 0 15px #228dff, 0 0 20px #fff, 0 0 35px #fff, 0 0 40px #228dff, 0 0 50px #228dff, 0 0 75px #228dff;
+        font-size: 15px;
+    }
+    @nest .fab.fa-imdb {
+        color: #f5de50;
+        background-color: transparent;
+        font-size: 20px;
+        margin-right: 2px;
+        max-width: 35px;
+        max-height: 35px;
+        margin-top: -6px;
+    }
+    @nest .Genre {
+        margin-right: 20px;
+    }
+    @nest .release-date {
+        margin-right: 20px;
+    }
+    @nest .Runtime {
+        margin-right: 20px;
+    }
+    @nest span {
+        color: white;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    } */
+}
+
+.MovieInfo .synopsisText {
+    color: rgba(255, 255, 255, 0.781);
+    font-size: 19px;
+    max-width: 600px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 15px;
+}
+
+@-webkit-keyframes animatetop {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+    to {
+        top: 300;
+        opacity: 1;
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+    to {
+        top: 200;
+        opacity: 1;
+    }
+}

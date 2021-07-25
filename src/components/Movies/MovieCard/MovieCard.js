@@ -3,7 +3,7 @@ import styles from "./MovieCard.module.css";
 
 const movieCard = (props) => {
   return (
-    <div className={styles.MovieCard}>
+    <div onClick={props.clicked} className={styles.MovieCard}>
       <img
         id="poster"
         src={

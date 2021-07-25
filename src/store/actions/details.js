@@ -2,20 +2,21 @@ import * as actionType from "./actionTypes";
 
 import axios from "../../services/axios-custom";
 
-export const getGenresList = (res) => {
+export const getMovieDetails = (res) => {
   return {
-    type: actionType.GET_GENRES_LIST,
-    genresList: res,
+    type: actionType.GET_MOVIE_DETAILS,
+    details: res,
   };
 };
 
-export const fetchGenresList = () => {
+export const fetchMovieDetails = (movieID) => {
   return (dispatch) =>
     axios
-      .get(actionType.MovieService.genreList + actionType.MovieService.api_key)
+      .get("movie/" + movieID + actionType.MovieService.api_key)
       .then((res) => {
-        let genresList = res.data.genres;
-        dispatch(getGenresList(genresList));
+        let movieDetail = res.data;
+        console.log(movieDetail)
+        dispatch(getMovieDetails(movieDetail));
       })
       .catch((err) => {
         dispatch(requestFailed());
