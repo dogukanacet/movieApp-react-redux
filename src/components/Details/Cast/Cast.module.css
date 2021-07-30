@@ -23,6 +23,7 @@
 }
 
 .CastButton {
+    cursor: pointer;
     z-index: 2;
     display: flex;
     position: absolute;
@@ -41,26 +42,13 @@
     animation-duration: 0.3s;
 }
 
-.Cast-button:hover {
+.CastButton:hover {
     text-shadow: 0 0 5px #da22ff, 0 0 10px #da22ff, 0 0 15px #da22ff, 0 0 20px #fff, 0 0 35px #fff, 0 0 40px #da22ff, 0 0 50px #da22ff, 0 0 75px #da22ff;
 }
 
-.Cast-button.onclick {
+.CastButton.active {
     right: 250px;
     transition: 1s;
-}
-
-.UiCard {
-    line-height: 1.8;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.Avatar {
-    width: 75px;
-    height: 85px;
-    border-radius: 20%;
 }
 
 @-webkit-keyframes animaterigth {

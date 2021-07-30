@@ -28,9 +28,16 @@ const MovieService = {
     );
   },
 
+  getCast: (movieID) => {
+    return axios.get("movie/" + movieID + "/credits" + MovieService.api_key);
+  },
+
   searchMovie: (searchVal) => {
     return axios.get(
-      MovieService.search + MovieService.api_key + MovieService.query + searchVal
+      MovieService.search +
+        MovieService.api_key +
+        MovieService.query +
+        searchVal
     );
   },
 };

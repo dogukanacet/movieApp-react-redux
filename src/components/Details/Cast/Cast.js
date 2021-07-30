@@ -3,23 +3,41 @@ import { Fragment } from "react";
 
 import styles from "./Cast.module.css";
 
-const cast = (props) => (
-  <Fragment>
-    <a className={styles.CastButton}>CAST</a>
-    <div className={styles.Cast}>
-      <div className={styles.UiCard}>
-        <span>
-          <img
-            src="https://image.tmdb.org/t/p/original"
-            alt="Avatar"
-            className={styles.Avatar}
-          />
-          <br />
-          <br />
-        </span>
+import Avatar from "./Avatar/Avatar";
+
+const cast = (props) => {
+  let avatar = props.cast.map((castAvatar) => {
+    return (
+      <Avatar
+        key={castAvatar.id}
+        name={castAvatar.original_name}
+        character={castAvatar.character}
+        avatar={castAvatar.profile_path}
+      />
+    );
+  });
+
+  return (
+    <Fragment>
+      <div
+        onClick={props.clicked}
+        className={
+          props.active
+            ? `${styles.CastButton} ${styles.active}`
+            : styles.CastButton
+        }
+      >
+        CAST
       </div>
-    </div>
-  </Fragment>
-);
+      <div
+        className={
+          props.active ? `${styles.Cast} ${styles.active}` : styles.Cast
+        }
+      >
+        {avatar}
+      </div>
+    </Fragment>
+  );
+};
 
 export default cast;

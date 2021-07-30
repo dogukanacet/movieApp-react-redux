@@ -1,0 +1,12 @@
+.UiCard {
+    line-height: 1.8;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.Avatar {
+    width: 75px;
+    height: 85px;
+    border-radius: 20%;
+}
