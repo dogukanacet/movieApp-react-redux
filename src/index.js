@@ -10,6 +10,7 @@ import moviesReducer from "./store/reducers/movies";
 import genresReducer from "./store/reducers/genres";
 import detailsReducer from "./store/reducers/details";
 
+import 'semantic-ui-css/semantic.min.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 

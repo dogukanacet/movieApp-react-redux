@@ -1,7 +1,6 @@
 import React from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar, faClock } from "@fortawesome/free-solid-svg-icons";
+import { Icon } from "semantic-ui-react";
 
 import styles from "./MovieInfo.module.css";
 
@@ -16,24 +15,25 @@ const movieInfo = (props) => {
                 return genre.name;
               }) + ""
             : ""}
-          &nbsp;&nbsp;
         </div>
 
         <div className={styles.ReleaseDate}>
-          <FontAwesomeIcon icon={faCalendar} />
-          &nbsp;
+          <Icon name="clock outline" />
+
           {props.infos.release_date}
-          &nbsp;
         </div>
         <div className={styles.Runtime}>
-          &nbsp;&nbsp;
-          <FontAwesomeIcon icon={faClock} />
-          &nbsp;
+          <Icon name="calendar alternate outline" />
+
           {props.infos.runtime + " min"}
-          &nbsp;&nbsp;
         </div>
-        <div>
-          <a target="_blank">{/* <FontAwesomeIcon icon={"imdb"} /> */}</a>
+        <div className={styles.Metascore}>
+          <a
+            href={"https://www.imdb.com/title/" + props.infos.imdb_id}
+            target="_blank"
+          >
+            <Icon name="imdb" size="large " />
+          </a>
           <span>{props.infos.metascore} Metascore </span>
         </div>
       </div>

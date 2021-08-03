@@ -38,7 +38,7 @@ class Sidebar extends Component {
               style={{ display: "inline-flex" }}
             >
               <Logo height="35px" width="35px" />
-              <p className={styles.Title}>&#160; MovieStore</p>
+              <p className={styles.Title}>&#160; MovieApp</p>
             </div>
           </NavLink>
           <div

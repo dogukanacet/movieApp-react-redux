@@ -1,0 +1,4 @@
+.GenresContainer {
+    display: flex;
+    flex-direction: column;
+}

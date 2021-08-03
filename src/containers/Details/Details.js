@@ -34,14 +34,16 @@ class Details extends Component {
 
   render() {
     let movieInfos = {
+      backdrop_path: this.props.details.backdrop_path,
       poster_path: this.props.details.poster_path,
-      title: this.props.details.original_title,
+      title: this.props.details.title,
       genres: this.props.details.genres,
       release_date: this.props.details.release_date,
       runtime: this.props.details.runtime,
       metascore: this.props.details.vote_average,
       synopsis: this.props.details.overview,
       id: this.props.details.id,
+      imdb_id: this.props.details.imdb_id,
     };
 
     return (

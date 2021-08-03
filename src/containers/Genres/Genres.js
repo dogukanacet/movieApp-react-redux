@@ -7,7 +7,8 @@ import * as actions from "../../store/actions/index";
 
 import GenreCard from "../../components/Genres/GenreCard/GenreCard";
 import Spinner from "../../components/UI/Spinner/Spinner";
-import { Fragment } from "react";
+
+import styles from "./Genres.module.css";
 
 class Genres extends Component {
   componentDidMount() {
@@ -39,7 +40,7 @@ class Genres extends Component {
     if (this.props.error) {
       movieGenres = <h1 style={{ color: "white" }}>Something went wrong</h1>;
     }
-    return <Fragment>{movieGenres}</Fragment>;
+    return <div className={styles.GenresContainer}>{movieGenres}</div>;
   }
 }
 
