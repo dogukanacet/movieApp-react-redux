@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This is a movie website that i've created with react. You can search movies and find informations about selected movie.
+This is a movie project that i've created with react. You can search movies and find informations about selected movie.
 
 ## Preview
 
