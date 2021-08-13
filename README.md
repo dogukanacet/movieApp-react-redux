@@ -4,7 +4,7 @@ This is a movie project that i've created with react. You can search movies and 
 
 ## Preview
 
-<p><img align="center" alt="gif" src="https://github.com/dogukanacet/movieApp-react-redux/blob/master/src/assets/preview.gif" width="500" height="320"/></p>
+<p><img align="center" alt="gif" src="https://github.com/dogukanacet/movieApp-react-redux/blob/master/src/assets/preview.gif" height="320"/></p>
 
 ## Available Scripts
 
