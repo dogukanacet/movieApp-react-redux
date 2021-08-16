@@ -8,7 +8,10 @@ This is a movie project that i've created by using react, also with third party 
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run the project with the commands below:
+
+### `npm install`
+
 
 ### `npm start`
 
