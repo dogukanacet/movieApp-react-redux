@@ -12,6 +12,11 @@ const reducer = (state = initialState, action) => {
         movieDetails: action.details,
         error: false,
       };
+    case actionType.CLEAR_MOVIE_DETAILS:
+      return {
+        movieDetails: [],
+        error: false,
+      };
     case actionType.REQUEST_FAILED:
       return {
         ...state,

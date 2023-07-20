@@ -16,16 +16,27 @@ class Sidebar extends Component {
     searchbarValue: "",
   };
 
-  searchbarValueHandler = (event) => {
-    this.state.searchbarValue = event.target.value;
+  searchbarValueHandler = (e) => {
+    this.setState({ searchbarValue: e.target.value });
+    this.props.history.push({
+      pathname: "/search",
+      search: `?${e.target.value}`
+    });
+    setTimeout(() => {
+      this.props.onSearch(e.target.value);
+    }, 300);
   };
 
   searchHandler = () => {
     this.props.history.push({
       pathname: "/search",
-      search: "?" + this.state.searchbarValue,
+      search: `?${this.state.searchbarValue}`
     });
     this.props.onSearch(this.state.searchbarValue);
+  };
+
+  clearSearchBar = () => {
+    this.setState({ searchbarValue: "" });
   };
 
   render() {
@@ -47,11 +58,13 @@ class Sidebar extends Component {
           >
             <Input
               withButton
+              value={this.state.searchbarValue}
               placeholder="Search"
               buttonText="&#9740;"
               buttonTextStyle="Rotate"
-              changed={(event) => this.searchbarValueHandler(event)}
-              clicked={this.searchHandler}
+              onChange={(e) => this.searchbarValueHandler(e)}
+              onClick={this.searchHandler}
+              onFocus={this.clearSearchBar}
             />
           </div>
           <ul>

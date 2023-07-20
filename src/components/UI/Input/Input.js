@@ -11,20 +11,22 @@ const input = (props) => {
   //   inputValue = e.target.value;
   // };
 
+
   return (
     <div className={props.withButton ? styles.InputWithButton : styles.Input}>
       <input
         id="id"
         type="text"
         name="search"
-        onFocus={(event) => (event.target.value = "")}
+        value={props.value}
+        onFocus={props.onFocus}
         placeholder={props.placeholder}
         autoComplete="off"
-        onChange={props.changed}
+        onChange={(e) => props.onChange(e)}
         // onChange={(e) => inputValueHandler(e)}
       />
       {props.withButton ? (
-        <Button clicked={props.clicked} fontSize="25px">
+        <Button onClick={props.onClick} fontSize="25px">
           <div className={[styles[props.buttonTextStyle]].join(" ")}>
             {props.buttonText}
           </div>

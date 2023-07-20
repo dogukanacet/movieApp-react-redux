@@ -1,96 +1,104 @@
 .Cast {
-    /* -webkit-animation-name: animateleft;
+  /* -webkit-animation-name: animateleft;
      -webkit-animation-duration: 1s;
      animation-name: animateleft;
      animation-duration: 1s;
      border: 2px solid; */
-    border-block-end: inherit;
-    border-right: none;
-    display: block;
-    overflow: auto;
-    z-index: 1;
-    position: fixed;
-    height: 100%;
-    width: 250px;
-    top: 0;
-    right: -250px;
-    transition: 1s;
+  border-block-end: inherit;
+  border-right: none;
+  display: block;
+  overflow: auto;
+  z-index: 1;
+  position: fixed;
+  height: 100%;
+  width: 250px;
+  top: 0;
+  right: -250px;
+  transition: 1s;
 }
 
 .Cast.active {
-    transition: 1s;
-    right: 0;
+  transition: 1s;
+  right: 0;
 }
 
 .CastButton {
-    cursor: pointer;
-    z-index: 2;
-    display: flex;
-    position: absolute;
-    text-shadow: 0 0 5px #228dff, 0 0 10px #228dff, 0 0 15px #228dff, 0 0 20px #fff, 0 0 35px #fff, 0 0 40px #228dff, 0 0 50px #228dff, 0 0 75px #228dff;
-    color: white;
-    font-family: Calisto MT, Bookman Old Style, Bookman, Goudy Old Style, Garamond, Hoefler Text, Bitstream Charter, Georgia, serif;
-    text-orientation: upright;
-    writing-mode: vertical-rl;
-    font-size: 50px;
-    top: 35vh;
-    right: 15px;
-    transition: 1s;
-    -webkit-animation-name: animateright;
-    -webkit-animation-duration: 0.3s;
-    animation-name: animateright;
-    animation-duration: 0.3s;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  position: absolute;
+  text-shadow: 0 0 5px #228dff, 0 0 10px #228dff, 0 0 15px #228dff,
+    0 0 20px #fff, 0 0 35px #fff, 0 0 40px #228dff, 0 0 50px #228dff,
+    0 0 75px #228dff;
+  color: white;
+  font-family: Calisto MT, Bookman Old Style, Bookman, Goudy Old Style, Garamond,
+    Hoefler Text, Bitstream Charter, Georgia, serif;
+  text-orientation: upright;
+  writing-mode: vertical-rl;
+  font-size: 50px;
+  top: 35vh;
+  right: 15px;
+  transition: 1s;
+  -webkit-animation-name: animateright;
+  -webkit-animation-duration: 0.3s;
+  animation-name: animateright;
+  animation-duration: 0.3s;
 }
 
 .CastButton:hover {
-    text-shadow: 0 0 5px #da22ff, 0 0 10px #da22ff, 0 0 15px #da22ff, 0 0 20px #fff, 0 0 35px #fff, 0 0 40px #da22ff, 0 0 50px #da22ff, 0 0 75px #da22ff;
+  text-shadow: 0 0 5px #da22ff, 0 0 10px #da22ff, 0 0 15px #da22ff,
+    0 0 20px #fff, 0 0 35px #fff, 0 0 40px #da22ff, 0 0 50px #da22ff,
+    0 0 75px #da22ff;
 }
 
 .CastButton.active {
-    right: 250px;
-    transition: 1s;
+  text-shadow: 0 0 5px #da22ff, 0 0 10px #da22ff, 0 0 15px #da22ff,
+    0 0 20px #fff, 0 0 35px #fff, 0 0 40px #da22ff, 0 0 50px #da22ff,
+    0 0 75px #da22ff;
+  right: 250px;
+  transition: 1s;
 }
 
 @-webkit-keyframes animaterigth {
-    from {
-        right: 200px;
-        opacity: 0;
-    }
-    to {
-        right: 15px;
-        opacity: 1;
-    }
+  from {
+    right: 200px;
+    opacity: 0;
+  }
+  to {
+    right: 15px;
+    opacity: 1;
+  }
 }
 
 @keyframes animateright {
-    from {
-        right: 200px;
-        opacity: 0;
-    }
-    to {
-        right: 15px;
-        opacity: 1;
-    }
+  from {
+    right: 200px;
+    opacity: 0;
+  }
+  to {
+    right: 15px;
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes animateleft {
-    from {
-        right: -250px;
-        opacity: 0;
-    }
-    to {
-        right: 0;
-        opacity: 1;
-    }
+  from {
+    right: -250px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
 }
 
 @keyframes animateleft {
-    from {
-        right: -250px;
-        opacity: 0;
-    }
-    to {
-        right: 0;
-        opacity: 1;
-    }
+  from {
+    right: -250px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
 }

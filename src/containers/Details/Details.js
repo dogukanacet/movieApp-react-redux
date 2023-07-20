@@ -50,7 +50,7 @@ class Details extends Component {
       <Fragment>
         <Poster path={movieInfos.poster_path} />
         <div
-          onClick={this.props.clicked}
+          onClick={this.props.onClick}
           className={
             this.state.active
               ? `${styles.Close} ${styles.active}`
